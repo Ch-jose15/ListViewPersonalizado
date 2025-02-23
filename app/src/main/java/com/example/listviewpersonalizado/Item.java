@@ -1,18 +1,12 @@
 package com.example.listviewpersonalizado;
 
 public class Item {
-    private int imageResource;
     private String title;
     private String description;
 
-    public Item(int imageResource, String title, String description) {
-        this.imageResource = imageResource;
+    public Item(String title, String description) {
         this.title = title;
         this.description = description;
-    }
-
-    public int getImageResource() {
-        return imageResource;
     }
 
     public String getTitle() {

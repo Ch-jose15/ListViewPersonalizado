@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
+import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
@@ -48,12 +48,10 @@ public class CustomAdapter extends BaseAdapter {
 
         Item item = items.get(position);
 
-        ImageView imagen = convertView.findViewById(R.id.item_image);
         TextView titulo = convertView.findViewById(R.id.item_title);
         TextView descripcion = convertView.findViewById(R.id.item_description);
         RadioButton boton = convertView.findViewById(R.id.rb);
 
-        imagen.setImageResource(item.getImageResource());
         titulo.setText(item.getTitle());
         descripcion.setText(item.getDescription());
 
@@ -64,22 +62,40 @@ public class CustomAdapter extends BaseAdapter {
 
             tvColorSelected.setText("HAS SELECCIONADO EL COLOR: " + item.getTitle());
 
-            // Cambiar el fondo de la actividad según el color seleccionado
+            // Obtener referencias a los botones
+            Button btnInsert = ((MainActivity) context).findViewById(R.id.btnInsert);
+            Button btnDelete = ((MainActivity) context).findViewById(R.id.btnDelete);
+            Button btnList = ((MainActivity) context).findViewById(R.id.btnList);
+
+            // Cambiar el color de fondo de los botones
             switch (item.getTitle()) {
                 case "ROJO":
-                    ((MainActivity) context).getWindow().getDecorView().setBackgroundColor(Color.RED);
+                    btnInsert.setBackgroundColor(Color.RED);
+                    btnDelete.setBackgroundColor(Color.RED);
+                    btnList.setBackgroundColor(Color.RED);
                     break;
                 case "VERDE":
-                    ((MainActivity) context).getWindow().getDecorView().setBackgroundColor(Color.GREEN);
+                    btnInsert.setBackgroundColor(Color.GREEN);
+                    btnDelete.setBackgroundColor(Color.GREEN);
+                    btnList.setBackgroundColor(Color.GREEN);
                     break;
                 case "AZUL":
-                    ((MainActivity) context).getWindow().getDecorView().setBackgroundColor(Color.BLUE);
+                    btnInsert.setBackgroundColor(Color.BLUE);
+                    btnInsert.setTextColor(Color.WHITE);
+                    btnDelete.setBackgroundColor(Color.BLUE);
+                    btnDelete.setTextColor(Color.WHITE);
+                    btnList.setBackgroundColor(Color.BLUE);
+                    btnList.setTextColor(Color.WHITE);
                     break;
                 case "AMARILLO":
-                    ((MainActivity) context).getWindow().getDecorView().setBackgroundColor(Color.YELLOW);
+                    btnInsert.setBackgroundColor(Color.YELLOW);
+                    btnDelete.setBackgroundColor(Color.YELLOW);
+                    btnList.setBackgroundColor(Color.YELLOW);
                     break;
                 case "NARANJA":
-                    ((MainActivity) context).getWindow().getDecorView().setBackgroundColor(Color.parseColor("#FFA500")); // Naranja
+                    btnInsert.setBackgroundColor(Color.parseColor("#FFA500"));
+                    btnDelete.setBackgroundColor(Color.parseColor("#FFA500"));
+                    btnList.setBackgroundColor(Color.parseColor("#FFA500"));
                     break;
             }
         });
